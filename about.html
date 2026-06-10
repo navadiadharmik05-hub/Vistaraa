@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Vistaraa Interior Design</title>
+    <link rel="stylesheet" href="about-style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="logo-container">
+            <h1 class="logo-main-text">Vistaraa</h1>
+            <p class="logo-sub-text">Design Studio</p>
+        </div>
+        <nav>
+            <a href="index.html" class="back-btn">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Vistaraa</h1>
+        <p class="tagline">Where Your Vision Meets Our Expertise</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- About Section -->
+        <div class="section">
+            <h2>About Vistaraa</h2>
+            <div class="philosophy-list">
+                <div class="philosophy-item">
+                    <p>At Vistaraa, we believe that interior design is not just about aesthetics; it's about creating
+                        spaces that resonate with your lifestyle and aspirations. We are committed to delivering
+                        personalized, innovative, and sustainable design solutions that transform your home into a
+                        sanctuary of comfort and style.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Section -->
+        <div class="section">
+            <h2>Why Choose Vistaraa?</h2>
+            <div class="philosophy-list">
+                <div class="philosophy-item">
+                    <strong>End-to-End Execution</strong>
+                    <p>We handle everything from conceptualization and 3D rendering to material sourcing and final
+                        styling, giving you a stress-free experience.</p>
+                </div>
+                <div class="philosophy-item">
+                    <strong>Tailored Solutions</strong>
+                    <p>We respect your budget and timeline, offering transparent communication and bespoke solutions
+                        tailored to your specific needs.</p>
+                </div>
+                <div class="philosophy-item">
+                    <strong>Trusted Network</strong>
+                    <p>Over the years, we have built strong relationships with top-tier artisans, contractors, and
+                        suppliers, ensuring that the craftsmanship in your home is nothing short of exceptional.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Let's Create Something Beautiful Together</h2>
+            <p>Whether you are looking to refresh a single room or undertake a complete home renovation.</p>
+            <p>Jinal Jayant Navadia and the Vistaara team are here to turn your dream into reality.</p>
+            <button class="cta-btn" onclick="alert('Contact us at: vistaraadesignstudio@gmail.com')">Get in Touch</button>
+            <button class="cta-btn" onclick="window.location.href='GET_A_QUOTE.html'">Request a Quote</button>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <h3>&copy; 2026 Vistaraa Interior Design. All rights reserved.</h3>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const items = document.querySelectorAll('.philosophy-item');
+            items.forEach(item => {
+                item.addEventListener('click', function () {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transition = 'transform 0.3s ease';
+                        this.style.transform = 'translateX(5px)';
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
