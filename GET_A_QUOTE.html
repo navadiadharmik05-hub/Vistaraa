@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Consultation - Vistaraa Design Studio</title>
+    <link rel="stylesheet" href="get_a_quote_style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1 class="logo-main-text">Vistaraa</h1>
+            <p class="logo-sub-text">Design Studio</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="consultation-container">
+            <div class="image-section">
+                <img src="./images/quote.jpeg" alt="Bedroom Interior">
+            </div>
+
+            <div class="form-section">
+                <h1>Get a Free Consultation</h1>
+
+                <form action="https://api.web3forms.com/submit" method="POST" id="consultationForm">
+                    <input type="hidden" name="access_key" value="1c00aee0-ba87-49d7-b704-46c50acbb0fc">
+
+                    <div class="form-group">
+                        <label class="main-label">Tell us about your home</label>
+                        <div class="radio-group">
+                            <label class="radio-option"><input type="radio" name="home_type" value="1 BHK"> 1 BHK</label>
+                            <label class="radio-option"><input type="radio" name="home_type" value="2 BHK"> 2 BHK</label>
+                            <label class="radio-option"><input type="radio" name="home_type" value="3 BHK"> 3 BHK</label>
+                            <label class="radio-option"><input type="radio" name="home_type" value="4 BHK / Duplex"> 4 BHK / Duplex</label>
+                            <label class="radio-option"><input type="radio" name="home_type" value="Bungalow / Villa"> Bungalow / Villa</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="main-label">Which city is this home in?</label>
+                        <select name="city" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="mumbai">Mumbai</option>
+                        </select>
+                    </div>
+
+                    <div class="input-grid">
+                        <input type="text" name="first_name" placeholder="Enter your first name..." maxlength="15" required>
+                        <input type="text" name="last_name" placeholder="Enter your last name..." maxlength="15" required>
+                        <input type="tel" name="phone_number" placeholder="Enter your phone number..." minlength="10"
+                            maxlength="15" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                        <input type="email" name="email" placeholder="Enter your email..." maxlength="50" required>
+                    </div>
+
+                    <textarea name="message" placeholder="Write your message here"></textarea>
+
+                    <div class="button-group">
+                        <button type="submit" class="submit-btn">Submit</button>
+                        <a href="index.html" class="home-btn">Return to Home</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer">
+        <h3>&copy; 2026 Vistaara Interior Design. All rights reserved.</h3>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
+            const submitBtn = document.querySelector('.submit-btn');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                submitBtn.textContent = "Sending...";
+                submitBtn.style.backgroundColor = "#e4d3ae";
+                submitBtn.style.color = "#333";
+
+                const formData = new FormData(form);
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        alert(`Thank you, ${formData.get('first_name')}! We have received your consultation request and will contact you soon.`);
+                        form.reset();
+                    } else {
+                        alert("Something went wrong. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    alert("Something went wrong. Please check your internet connection.");
+                })
+                .finally(function () {
+                    submitBtn.textContent = "Submit";
+                    submitBtn.style.backgroundColor = "";
+                    submitBtn.style.color = "";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
