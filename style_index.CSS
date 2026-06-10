@@ -1,0 +1,394 @@
+/* =========================================
+   FONTS
+   ========================================= */
+@font-face {
+    font-family: 'VistaaraCursive';
+    src: url('./Slight-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'VistaaraClean';
+    src: url('./alta-regular.otf') format('truetype');
+}
+
+/* =========================================
+   RESET & SYSTEM BALANCES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+body {
+    background: #2b1f16;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+header {
+    display: flex;
+    background: #e4d3ae;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    position: relative;
+}
+
+.logo-container {
+    padding: 22px 25px 15px 25px;
+    flex: 1;
+}
+
+.logo-main-text {
+    font-family: 'VistaaraCursive';
+    font-size: clamp(44px, 7vw, 80px);
+    color: #8b7a55;
+    font-weight: 500;
+    line-height: 1.25;
+    display: block;
+}
+
+.logo-sub-text {
+    font-family: 'VistaaraClean';
+    font-size: clamp(20px, 1.8vw, 20px);
+    color: #8b7a55;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding-left: clamp(35px, 7vw, 100px);
+    margin-top: -8px;
+}
+
+nav {
+    font-family: 'VistaaraClean';
+    padding: 20px;
+    flex-shrink: 0;
+    margin-right: 100px;
+}
+
+nav a {
+    color: #8b7a55;
+    padding: 8px clamp(8px, 2vw, 22px);
+    display: inline-block;
+    text-decoration: none;
+    font-size: clamp(11px, 1.4vw, 15px);
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #554c44;
+    text-decoration: underline;
+}
+
+/* =========================================
+   MAIN CAROUSEL CORE COMPONENT WRAPPER
+   ========================================= */
+.main-slider-layout {
+    display: flex;
+    flex-direction: column; /* Mobile First Strategy */
+    width: 100%;
+}
+
+#hero-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #b99568;
+    aspect-ratio: 4 / 5; /* Elegant portrait display on mobile viewports */
+    max-height: 50vh;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.9s cubic-bezier(0.445, 0.05, 0.55, 0.95), visibility 0.9s;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* =========================================
+   THE UNIFIED CONTENT SIDEBAR/PANEL
+   ========================================= */
+.project-details-sidebar {
+    background: #2b1f16; /* Shared rich premium dark brown background theme */
+    padding: 30px 24px 35px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Typography Accent Elements */
+.pip-label {
+    font-family: 'VistaaraClean', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3.5px;
+    font-weight: 500;
+    color: #e4d3ae;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.pip-name {
+    font-family: 'VistaaraClean', sans-serif;
+    font-size: 30px;
+    color: #f1deca;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.pip-divider {
+    width: 20px;
+    height: 1px;
+    background: rgba(241, 222, 202, 0.2);
+    margin-bottom: 9px;
+}
+
+.pip-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.pip-key {
+    font-family: 'VistaaraClean', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2.5px;
+    color: #e4d3ae;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.pip-val {
+    font-family: 'VistaaraClean', sans-serif;
+    font-size: 21px;
+    color: #f1deca;
+    text-align: right;
+    line-height: 1.3;
+}
+
+/* =========================================
+   THE TIMELINE LINE PROGRESS CONTROLS
+   ========================================= */
+.slide-dots {
+    display: flex;
+    gap: 12px;
+    padding: 5px 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar tracks across timeline channels */
+.slide-dots::-webkit-scrollbar {
+    display: none;
+}
+
+.timeline-step {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    width: 48px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.step-number {
+    font-family: 'VistaaraClean', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #f1deca;
+    opacity: 0.35;
+    transition: opacity 0.3s ease;
+}
+
+.step-line {
+    width: 100%;
+    height: 2px;
+    background: rgba(241, 222, 202, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.step-line .fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: #e4d3ae;
+    transition: width 0.4s ease;
+}
+
+.timeline-step.active .step-number {
+    opacity: 1;
+    font-weight: 600;
+    color: #e4d3ae;
+}
+
+.timeline-step.active .step-line .fill {
+    width: 100%;
+}
+
+/* Studio Tagline Block Configuration */
+.studio-tagline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.studio-tagline p {
+    font-family: 'VistaaraClean';
+    font-size: 11px;
+    color: #f1deca;
+    opacity: 0.75;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
+
+/* Consultation Call-To-Action Element */
+.hero-cta {
+    font-family: 'VistaaraClean';
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    color: #f1deca;
+    border: 1px solid rgba(241, 222, 202, 0.4);
+    border-radius: 4px;
+    padding: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.hero-cta:hover {
+    background-color: #e4d3ae;
+    color: #2b1f16;
+    border-color: #e4d3ae;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer {
+    background: #e4d3ae;
+    color: #8b7a55;
+    text-align: center;
+    padding: 1.2rem;
+    font-family: 'VistaaraClean';
+    margin-top: auto;
+}
+
+.footer h3 {
+    font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   DESKTOP VIEWPORT ADVANCED MEDIA QUERY (≥ 801px)
+   ========================================= */
+@media (min-width: 801px) {
+    .main-slider-layout {
+        flex-direction: row; /* Transforms to split-screen layout on laptops */
+        height: calc(100vh - 110px);
+        min-height: 500px;
+    }
+
+    #hero-carousel {
+        width: 65%;
+        height: 100%;
+        max-height: none;
+        aspect-ratio: auto;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 4;
+        pointer-events: none;
+        background: linear-gradient(to top, rgba(8, 5, 2, 0.4) 0%, transparent 100%);
+    }
+
+    /* Elegant Desktop Sidebar Panel positioning */
+    .project-details-sidebar {
+        width: 35%;
+        height: 100%;
+        padding: 5% 4%;
+        justify-content: space-between; /* Evenly spaces panels vertically */
+        background: linear-gradient(180deg, #2b1f16 0%, #3d2d20 50%, #2b1f16 100%);
+        border-left: 1px solid rgba(241, 222, 202, 0.08);
+    }
+
+    .slide-dots {
+        flex-wrap: wrap; /* Wraps items cleanly into uniform columns on desktop side panels */
+        overflow-x: visible;
+        white-space: normal;
+        gap: 16px 14px;
+    }
+
+    .timeline-step {
+        width: 65px; /* Expanded grid size matching screen margins */
+    }
+
+    .hero-cta {
+        font-size: 14px;
+        letter-spacing: 3px;
+        padding: 12px;
+        border: 1px solid rgba(241, 222, 202, 0.6);
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN ADAPTATIONS (≤ 400px)
+   ========================================= */
+@media (max-width: 400px) {
+    .logo-main-text {
+        font-size: 40px;
+    }
+
+    nav a {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+
+    #hero-carousel {
+        aspect-ratio: 3 / 4;
+    }
+}
